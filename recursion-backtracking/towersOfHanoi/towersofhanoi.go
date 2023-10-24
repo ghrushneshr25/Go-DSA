@@ -22,20 +22,24 @@
 	algorithm.
 */
 
-package main
+package towersofhanoi
 
 import "fmt"
 
-func TowerOfHanoi(n int, fromPeg, toPeg, auxPeg string) {
-	if n == 1 {
-		fmt.Printf("From : %v To : %v \n", fromPeg, toPeg)
-		return
-	}
-	TowerOfHanoi(n-1, fromPeg, auxPeg, toPeg)
-	fmt.Printf("From : %v To : %v \n", fromPeg, toPeg)
-	TowerOfHanoi(n-1, auxPeg, toPeg, fromPeg)
+func TowerOfHanoi(n int, fromPeg, toPeg, auxPeg string) []string {
+	var moves []string
+	towerOfHanoiRecursive(n, fromPeg, toPeg, auxPeg, &moves)
+	return moves
 }
 
-func main() {
-	TowerOfHanoi(5, "A", "B", "C")
+func towerOfHanoiRecursive(n int, fromPeg, toPeg, auxPeg string, moves *[]string) {
+	if n == 1 {
+		move := fmt.Sprintf("%v->%v", fromPeg, toPeg)
+		*moves = append(*moves, move)
+		return
+	}
+	towerOfHanoiRecursive(n-1, fromPeg, auxPeg, toPeg, moves)
+	move := fmt.Sprintf("%v->%v", fromPeg, toPeg)
+	*moves = append(*moves, move)
+	towerOfHanoiRecursive(n-1, auxPeg, toPeg, fromPeg, moves)
 }

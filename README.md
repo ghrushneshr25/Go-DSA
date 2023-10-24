@@ -6,6 +6,9 @@
 
 ## Recursion
 
-[1. Tower of Hanoi](./recursion/towersOfHanoi/main.go)
+[P1. Tower of Hanoi](./recursion/towersOfHanoi/towersofhanoi.go)
 
-[2. Check if Array is sorted](./recursion/sortedArray/main.go)
+[P2. Check if Array is sorted](./recursion/sortedArray/sortedarray.go)
+
+## Backtracking
+[P3. Generate all the strings of n bits.](./backtracking/nBitString/nbitstring.go)
