@@ -452,7 +452,28 @@ func TestDeleteIntermediateNode(t *testing.T) {
 			t.Error("Expected next to be non-nil after deleting a middle node")
 		}
 		if head.GetNext().GetData() != data3 {
-			t.Errorf("Expected the next node data to be %d, but got %d", data2, head.GetNext().GetData())
+			t.Errorf("Expected the next node data to be %d, but got %d", data3, head.GetNext().GetData())
+		}
+	})
+
+	t.Run("Delete a middle node", func(t *testing.T) {
+		data1 := 42
+		head := singlylinkedlist.NewSinglyLinkedList(data1)
+		data2 := 24
+		singlylinkedlist.InsertAtEnd(&head, data2)
+		data3 := 25
+		singlylinkedlist.InsertAtEnd(&head, data3)
+		value := 24
+		err := singlylinkedlist.DeleteIntermediateNode(&head, value)
+
+		if err != nil {
+			t.Errorf("Expected no error, but got: %v", err)
+		}
+		if head.GetNext() == nil {
+			t.Error("Expected next to be non-nil after deleting a middle node")
+		}
+		if head.GetNext().GetData() != data3 {
+			t.Errorf("Expected the next node data to be %d, but got %d", data3, head.GetNext().GetData())
 		}
 	})
 

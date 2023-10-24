@@ -137,13 +137,13 @@ func DeleteIntermediateNode(head **SinglyLL, value int) error {
 		return nil
 	}
 	current := *head
-	var previous **SinglyLL
+	var previous *SinglyLL
 	for current != nil {
 		if current.GetData() == value {
-			(*previous) = current.GetNext()
+			previous.SetNext(current.GetNext())
 			return nil
 		}
-		previous = &current
+		previous = current
 		current = current.GetNext()
 	}
 	return errors.New("not found")
